@@ -754,6 +754,103 @@
             line-height: 1.7;
         }
 
+        /* ── FAQ ── */
+        .faq-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #2a2a2a;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--text-muted);
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .faq-icon::before {
+            width: 14px;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-icon::after {
+            width: 2px;
+            height: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-item.open .faq-icon::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 2rem 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
         /* ── FOOTER / CTA ── */
         .final-cta {
             text-align: center;
@@ -920,6 +1017,7 @@
             <li><a href="#process" onclick="closeNav()">Process</a></li>
             <li><a href="#team" onclick="closeNav()">Team</a></li>
             <li><a href="#pricing" onclick="closeNav()">Pricing</a></li>
+            <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
             <li><a href="#pricing" class="nav-cta">Get Started</a></li>
         </ul>
         <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
@@ -1164,6 +1262,70 @@
         <div class="different-box fade-up">
             <p class="quote">Built on open-source tools. Running on <span class="accent">your&nbsp;hardware</span>. Your data stays <span class="accent">yours</span>.</p>
             <p class="subtext">This isn't theoretical. It's Tuesday.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="section-label fade-up">FAQ</div>
+        <h2 class="section-title fade-up">Common questions, straight answers.</h2>
+        <div class="faq-list">
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    How long until I see results?
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Week 1 you'll have your first briefing. By Week 4, the system runs your day.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Is my data private?
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Everything runs on your hardware. Your data never touches our servers. Open-source tools, local deployment, you own every byte.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    What do I need to get started?
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">A Mac or Linux machine, an Anthropic Claude subscription (~$20/mo), and 2–3 hours per week for the first month.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    What happens after 4 months?
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">You keep everything we built. The system is yours. Most clients continue at $2,500/mo for ongoing optimization and new automations.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Can I build this myself?
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Technically, yes. Practically, it took our founder 6 weeks of full-time work to build his system. We do it in 4 weeks while you keep doing your job.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    What about security and compliance?
+                    <span class="faq-icon"></span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Your AI runs locally. No cloud dependency. No data leaves your machine. Works for high-compliance industries including finance and legal.</div>
+                </div>
+            </div>
         </div>
     </section>
 
